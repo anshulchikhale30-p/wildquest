@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#f4ead5" />
+  <meta name="description" content="WildQuest creates tiny offline AI field missions that get you away from your phone." />
+  <title>WildQuest — Go notice something</title>
+  <link rel="manifest" href="/manifest.webmanifest" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="site-header">
+    <a class="brand" href="#top" aria-label="WildQuest home">
+      <span class="brand-mark"><span></span><span></span><span></span></span>
+      <span>WILDQUEST</span>
+    </a>
+    <div class="header-actions">
+      <span class="status-pill" id="privacyStatus"><span class="status-dot"></span>Local by default</span>
+      <button class="icon-button" id="openAbout" aria-label="About WildQuest">?</button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> A field guide for the easily distracted</p>
+        <h1>Go notice<br /><em>something.</em></h1>
+        <p class="hero-intro">WildQuest makes a small outdoor mission, then gets quiet. No feed. No endless chat. Just a reason to step outside and pay attention.</p>
+        <div class="hero-actions">
+          <button class="primary-button" id="startMission">Make my mission <span>↗</span></button>
+          <a class="text-link" href="#how">How it works <span>↓</span></a>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Illustration of a trail through a meadow">
+        <svg viewBox="0 0 540 460" role="img" aria-hidden="true">
+          <path class="sun" d="M414 55c0 29-23 52-52 52s-52-23-52-52 23-52 52-52 52 23 52 52Z" />
+          <path class="hill back" d="M0 280c76-80 137-98 212-57 69-109 156-133 256-46 31-13 52-21 72-20v303H0Z" />
+          <path class="hill front" d="M0 316c82-57 164-47 237 1 82-92 191-104 303-33v176H0Z" />
+          <path class="path" d="M239 459c26-91 77-147 115-203 34-49 58-88 55-133-3-43-16-63-25-78 31 31 52 72 48 118-4 61-47 108-77 157-31 49-45 93-48 139Z" />
+          <path class="plant" d="M98 395c-6-42 0-81 26-115M102 359c-22-13-35-30-42-53M109 335c24-11 37-27 47-48M416 365c-2-35 7-72 32-101M422 333c-20-9-34-22-44-41M429 312c20-11 32-25 39-45" />
+          <circle class="tiny-sun" cx="80" cy="76" r="4" /><circle class="tiny-sun" cx="122" cy="124" r="3" /><circle class="tiny-sun" cx="473" cy="149" r="4" />
+          <path class="bird" d="M173 89c8-8 16-8 24 0 8-8 16-8 24 0M207 115c7-6 14-6 21 0 7-6 14-6 21 0" />
+        </svg>
+        <div class="art-caption"><span>01</span><span>the world is still out there</span></div>
+      </div>
+    </section>
+
+    <section class="mission-section section-shell" id="missionSetup">
+      <div class="section-heading">
+        <div><p class="eyebrow"><span class="eyebrow-line"></span> Start here</p><h2>Choose your<br /><em>conditions.</em></h2></div>
+        <p class="section-note">The best mission is one you will actually take. Keep it small, keep it outside.</p>
+      </div>
+      <form class="mission-form" id="missionForm">
+        <div class="form-row">
+          <fieldset class="field-group time-field"><legend>01 / How long?</legend><div class="segmented" data-field="time"><button type="button" class="selected" data-value="10 minutes">10 min</button><button type="button" data-value="20 minutes">20 min</button><button type="button" data-value="45 minutes">45 min</button></div></fieldset>
+          <fieldset class="field-group"><legend>02 / Where are you?</legend><div class="select-wrap"><select id="environment"><option value="a city park">City park</option><option value="a backyard">Backyard</option><option value="a neighborhood sidewalk">Sidewalk</option><option value="a trail">Trail</option></select><span>⌄</span></div></fieldset>
+        </div>
+        <div class="form-row">
+          <fieldset class="field-group"><legend>03 / What sounds good?</legend><div class="segmented two" data-field="pace"><button type="button" class="selected" data-value="curious">Curious</button><button type="button" data-value="gentle">Gentle</button><button type="button" data-value="playful">Playful</button><button type="button" data-value="focused">Focused</button></div></fieldset>
+          <fieldset class="field-group"><legend>04 / Who is with you?</legend><div class="segmented two" data-field="group"><button type="button" class="selected" data-value="just me">Just me</button><button type="button" data-value="a friend">A friend</button><button type="button" data-value="the family">The family</button><button type="button" data-value="my run club">Run club</button></div></fieldset>
+        </div>
+        <div class="form-footer"><p class="form-footnote"><span class="leaf-icon">✳</span> No account. No location tracking. Your mission stays on this device.</p><button type="submit" class="primary-button">Create a field mission <span>↗</span></button></div>
+      </form>
+    </section>
+
+    <section class="generated-section section-shell hidden" id="missionCardSection">
+      <div class="mission-topline"><p class="eyebrow"><span class="eyebrow-line"></span> Your field mission</p><span class="offline-badge"><span class="status-dot"></span><span id="aiModeText">Offline fallback</span></span></div>
+      <div class="mission-card">
+        <div class="mission-card-head"><div><p class="kicker" id="missionKicker">10 MIN · CITY PARK · CURIOUS</p><h2 id="missionTitle">The small things<br /><em>are showing off.</em></h2></div><div class="mission-number">01</div></div>
+        <p class="mission-lead" id="missionLead">A tiny noticing walk for the edges of things. Bring your eyes, your ears, and nothing you need to buy.</p>
+        <div class="task-list" id="taskList"></div>
+        <div class="mission-card-footer"><span><span class="mini-signal"></span> Made on your device</span><button class="secondary-button" id="startTrail">Enter trail mode <span>↗</span></button></div>
+      </div>
+      <button class="reset-link" id="newMission">← Make a different mission</button>
+    </section>
+
+    <section class="trail-section section-shell hidden" id="trailMode">
+      <div class="trail-topline"><span class="trail-label">TRAIL MODE / <span id="trailEnvironment">CITY PARK</span></span><button class="close-trail" id="exitTrail">Exit trail mode ×</button></div>
+      <div class="trail-card">
+        <div class="trail-meta"><span id="trailCount">01 / 05</span><span class="trail-timer" id="trailTimer">10:00</span></div>
+        <div class="trail-progress"><span id="trailProgress"></span></div>
+        <div class="trail-icon" id="trailIcon">◌</div>
+        <p class="trail-type" id="trailType">NOTICE</p><h2 id="trailTask">Find a color<br /><em>you didn't expect.</em></h2><p id="trailPrompt">Look low, then look high. Let your eyes land on something you would usually walk past.</p>
+        <button class="complete-button" id="completeTask">I noticed it <span>↗</span></button>
+        <p class="trail-reminder">The phone can wait. You have the whole world.</p>
+      </div>
+    </section>
+
+    <section class="fieldnote-section section-shell hidden" id="fieldNote">
+      <div class="section-heading"><div><p class="eyebrow"><span class="eyebrow-line"></span> You came back with something</p><h2>Leave a<br /><em>field note.</em></h2></div><p class="section-note">A few words are enough. This stays on your device and becomes part of your own small archive.</p></div>
+      <form class="note-form" id="noteForm">
+        <label for="reflection">What did you notice?</label><textarea id="reflection" placeholder="A bird kept hopping between the same two trees…" rows="5"></textarea>
+        <div class="note-tools"><label class="upload-button"><input type="file" id="photos" accept="image/*" multiple /> <span>＋</span> Add photos <small id="photoCount"></small></label><button type="button" class="voice-button" id="voiceButton"><span>◉</span> <span id="voiceText">Record a voice note</span></button></div>
+        <div class="note-actions"><span class="note-private"><span class="status-dot"></span> Private to this device</span><button type="submit" class="primary-button">Make my field note <span>↗</span></button></div>
+      </form>
+      <div class="fieldnote-result hidden" id="fieldnoteResult"><div class="result-stamp">FIELD NOTE / <span id="resultDate"></span></div><h3 id="resultTitle">The edges were alive.</h3><p id="resultBody"></p><div class="result-grid"><div><span class="result-label">I noticed</span><strong id="resultObservations"></strong></div><div><span class="result-label">Next time</span><strong id="resultNext"></strong></div></div><button class="reset-link" id="startAgain">Start another mission ↗</button></div>
+    </section>
+
+    <section class="how-section section-shell" id="how">
+      <div class="how-intro"><p class="eyebrow"><span class="eyebrow-line"></span> The short version</p><h2>Less app.<br /><em>More outside.</em></h2><p>WildQuest uses AI for the part that needs a little spark—making a mission—and disappears for the part that matters.</p></div>
+      <div class="how-steps"><article><span>01</span><h3>Make a tiny plan</h3><p>Pick a place, a pace, and a pocket of time. The local generator turns it into five gentle prompts.</p></article><article><span>02</span><h3>Put it away</h3><p>Trail Mode keeps only one task visible. No feed, no chat, no notifications competing for the view.</p></article><article><span>03</span><h3>Bring back a story</h3><p>Write a line, add a photo, or talk to your phone. Your field note is synthesized locally, for you.</p></article></div>
+    </section>
+
+    <section class="open-section section-shell" id="open">
+      <div class="open-copy"><p class="eyebrow"><span class="eyebrow-line"></span> Why open matters</p><h2>Good AI should<br /><em>know when to stop.</em></h2><p>WildQuest is built around the open/local path: a browser-side endpoint like Ollama can run an open-weight model such as Qwen or Llama; if there is no signal, the seeded fallback still makes the experience useful.</p><p class="open-quote">“The screen should be the shortest part of the experience.”</p></div>
+      <div class="open-facts"><div><span class="fact-icon">⌁</span><h3>Offline by design</h3><p>Airplane mode is a feature, not an error state.</p></div><div><span class="fact-icon">⊙</span><h3>Private by default</h3><p>Photos, voice notes, and place stay on your device.</p></div><div><span class="fact-icon">⇄</span><h3>Model-swappable</h3><p>Open prompts and local endpoints keep behavior inspectable.</p></div></div>
+    </section>
+  </main>
+
+  <footer class="site-footer section-shell"><div><span class="brand-mark small"><span></span><span></span><span></span></span><span>WildQuest</span></div><p>Made for the space between one notification and the next.</p><span>Open/local AI · v1.0</span></footer>
+
+  <dialog id="aboutDialog"><button class="dialog-close" id="closeAbout">×</button><p class="eyebrow"><span class="eyebrow-line"></span> A note from the field</p><h2>We made a companion<br /><em>that lets go.</em></h2><p>Most AI products are designed to keep you talking. WildQuest is designed to send you somewhere else. It makes a small plan, keeps your notes private, and knows the best outcome is a quiet phone in your pocket.</p><p class="dialog-small">Try it with your Wi-Fi off. The mission generator still works.</p></dialog>
+  <script src="/app.js" defer></script>
+</body>
+</html>

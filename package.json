@@ -1,0 +1,10 @@
+{
+  "name": "wildquest",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Offline-first AI field missions for getting outside.",
+  "scripts": {
+    "start": "node server.js",
+    "build": "rm -rf dist && mkdir -p dist && cp -R public/. dist/"
+  }
+}
