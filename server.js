@@ -9,7 +9,7 @@ const types = { '.html': 'text/html; charset=utf-8', '.css': 'text/css; charset=
 const server = http.createServer((req, res) => {
   const pathname = decodeURIComponent((req.url || '/').split('?')[0]);
   if (pathname === '/health') { res.writeHead(200, { 'content-type': 'text/plain' }); return res.end('ok'); }
-  const safe = pathname === '/' ? '/index.html' : pathname;
+  const safe = pathname === '/' ? '/index.html' : (pathname === '/receiptdesk' || pathname === '/receiptdesk/' ? '/receiptdesk/index.html' : pathname);
   const file = path.normalize(path.join(root, safe));
   if (!file.startsWith(root)) { res.writeHead(403); return res.end('Forbidden'); }
   fs.readFile(file, (err, data) => {
