@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#eeeadf" />
+  <meta name="description" content="SlothSort tidies your files so you do not have to." />
+  <title>SlothSort — Let your files sort themselves</title>
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar"><a class="wordmark" href="/"><span class="leaf">◒</span> SlothSort</a><div class="top-actions"><span class="local-status"><span class="pulse"></span>Running locally</span><button id="helpButton" class="quiet-button">Why local?</button><div class="avatar">ss</div></div></header>
+  <main>
+    <section class="hero wrap"><div><p class="eyebrow">A tiny act of admin / 02</p><h1>Let your files<br /><em>sort themselves.</em></h1><p class="lede">SlothSort tidies the folder you keep avoiding. It makes calm decisions about names, destinations, and duplicates—then asks you to do exactly one thing: approve.</p><button id="heroTidy" class="primary-button">Tidy my inbox <span>↗</span></button></div><div class="hero-sloth" aria-label="Illustration of a sleepy sloth"><div class="leaf-shape leaf-one"></div><div class="leaf-shape leaf-two"></div><div class="sloth-face"><span class="eye left"></span><span class="eye right"></span><span class="nose"></span><span class="smile"></span></div><div class="branch"></div><span class="float-note note-one">no rush</span><span class="float-note note-two">✓</span></div></section>
+    <section class="dashboard wrap"><div class="section-top"><div><p class="eyebrow">Your gentle queue</p><h2>Downloads / <em>unhurried</em></h2></div><div class="mode-pill"><span class="pulse"></span><span id="modeText">Local fallback ready</span></div></div><div class="summary-grid"><div class="summary-main"><span class="summary-label">Things waiting</span><strong id="waitingCount">8</strong><span class="summary-caption">files asking for a home</span><div class="progress-track"><span id="progressBar"></span></div></div><div class="summary-card"><span class="summary-label">Time you get back</span><strong id="timeBack">18 min</strong><span class="summary-caption">estimated, give or take</span></div><div class="summary-card"><span class="summary-label">Duplicates spotted</span><strong id="duplicateCount">2</strong><span class="summary-caption">nothing deleted without asking</span></div></div><div class="queue-panel"><div class="queue-header"><div class="tabs"><button class="tab active" data-tab="all">All <b id="allCount">8</b></button><button class="tab" data-tab="needs-review">Needs review <b id="reviewCount">2</b></button><button class="tab" data-tab="sorted">Already sorted <b id="sortedCount">0</b></button></div><label class="add-files"><input type="file" id="fileInput" multiple /><span>＋</span> Add files</label></div><div class="queue-list" id="queueList"></div><div class="queue-footer"><span><span class="shield">⌾</span> Nothing leaves this device in local mode.</span><button class="primary-button small" id="tidyButton">Tidy all <span>↗</span></button></div></div></section>
+    <section class="sloth-strip wrap"><div class="sloth-mark">◒</div><div><strong>The sloth principle</strong><p>Do the thinking once. Never repeat the boring part.</p></div><div class="strip-rule"></div><span>Designed for people with better things to do</span></section>
+    <section class="how wrap"><div class="how-heading"><p class="eyebrow">The least ambitious workflow</p><h2>Three small<br /><em>moves.</em></h2></div><div class="how-grid"><article><span>01 / WATCH</span><h3>Drop the clutter</h3><p>Point SlothSort at a folder or add a handful of files. It starts with names and metadata, not uploads.</p></article><article><span>02 / NAP</span><h3>Let a local model think</h3><p>Use an Ollama-compatible open model when available. The built-in fallback still sorts common files offline.</p></article><article><span>03 / WAKE</span><h3>Approve the calm</h3><p>Review a transparent plan before anything moves. No surprise deletes, no mysterious cloud archive.</p></article></div></section>
+  </main>
+  <footer class="footer wrap"><a class="wordmark" href="/"><span class="leaf">◒</span> SlothSort</a><span>Open/local AI · built for less admin</span><span>v0.1</span></footer>
+  <dialog id="helpDialog"><button class="dialog-close" id="closeHelp">×</button><p class="eyebrow">THE SLOW VERSION</p><h2>Admin can be<br /><em>less urgent.</em></h2><p>SlothSort is a local-first file tidier for the folders you keep postponing. It proposes names and destinations, shows you the plan, and waits for one approval before moving anything.</p><p class="dialog-small">No file contents leave your device in fallback mode. Try “Tidy all” to see the demo plan.</p></dialog>
+  <script src="./app.js" defer></script>
+</body>
+</html>
